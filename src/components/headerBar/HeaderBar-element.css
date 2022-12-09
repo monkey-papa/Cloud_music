@@ -1,0 +1,52 @@
+.el-input--mini .el-input__inner {
+    height: 30px !important; 
+    transform: scale(0.9);
+}
+
+.el-input {
+    width: 80%;
+}
+
+.el-input--mini .el-input__icon {
+    line-height: 30px !important;
+    color: rgb(235, 235, 235);
+    transform: scale(0.9);
+}
+
+.el-input__prefix {
+    left: 12px;
+}
+
+.el-input__inner {
+    background-color: #b82525 !important;
+    border: none;
+    color: white !important;
+    border-radius: 5px;
+}
+
+.el-input__inner::-webkit-input-placeholder {
+    color: white!important;
+}
+
+.el-form-item {
+    font-size: 12px !important;
+}
+
+.el-form-item__label-wrap {
+    width: 100px;
+    text-align: right;
+    transform: scale(0.9);
+}
+
+.el-button--danger:focus, .el-button--danger:hover {
+    background-color: #ec4141 !important;
+    color:white !important;
+}
+.el-button--danger {
+    background-color: #ec4141 !important;
+}
+
+.el-button:focus, .el-button:hover {
+    border-color:#DCDFE6;
+    color:#606266;
+}
