@@ -54,14 +54,14 @@
       <div class="right">
         <div class="volumeControl">
           <!-- 歌词图标 -->
-          <i class="iconfont icon-geciweidianji" @click="Show"></i>
+          <i class="iconfont icon-geciweidianji" @click="Show" :class="{'active':isShow}"></i>
           <!-- 音量图标 -->
-          <i :class="{ 'iconfont icon-24gl-volumeHigh': isMuted == false, 'iconfont icon-24gl-volumeCross': isMuted == true }" @click="changeMutedState"></i>
+          <i :class="{ 'iconfont icon-24gl-volumeHigh': isMuted == false, 'iconfont icon-24gl-volumeCross': isMuted == true ,'active':isMuted}" @click="changeMutedState"></i>
           <!-- 音量条 -->
           <el-slider class="volumeSlider" v-model="volume" @input="changeVolume" :show-tooltip="false"></el-slider>
         </div>
         <div class="playList" @click="openDrawer">
-          <i class="iconfont icon-bofangliebiao" title="播放列表"></i>
+          <i class="iconfont icon-bofangliebiao" :class="{'active':isDrawer}" title="播放列表"></i>
         </div>
         <!-- 备案信息 -->
         <el-tooltip class="item" effect="dark" placement="left" :enterable="false">
@@ -72,7 +72,7 @@
       <!-- 抽屉 -->
       <el-drawer :visible.sync="drawer" :with-header="false" width="300">
         <div class="drawerHeader">总{{ musicList.length }}首</div>
-        <el-table :data="musicList" stripe style="width: 100%" :show-header="false" @row-dblclick="clickRow" highlight-current-row lazy>
+        <el-table :data="musicList" :cell-style="{background:'#202023'}" style="width: 100%" :show-header="false" @row-dblclick="clickRow" highlight-current-row lazy>
           <el-table-column prop="name" width="150px"> </el-table-column>
           <el-table-column prop="ar[0].name" width="80px"> </el-table-column>
           <el-table-column prop="dt" width="70px"> </el-table-column>
@@ -111,7 +111,7 @@ export default {
       // 进度条的位置
       timeProgress: 0,
       // 基础音量
-      volume: 8,
+      volume: 1,
       // 是否静音
       isMuted: false,
       // 抽屉是否被打开过（如果没打开过，里面的数据是不会渲染的）
@@ -121,12 +121,14 @@ export default {
       // 用户是否喜欢当前音乐
       isUserLikeCurrentMusic: false,
       recondInfo: `<div style='text-align:center;font-size:12px;'>
-粤ICP备2021068014号<br>个人邮箱: 1816298537@qq.com<br>本站为仿网易云音乐展示项目, 仅供学习使用, 侵权必删!</div>`,
+粤ICP备20221215号<br>个人邮箱: 1816298537@qq.com<br>本站为仿网易云音乐展示项目, 仅供学习使用, 侵权必删!</div>`,
       // 播放模式（顺序播放，随机播放）
       // order random
       playType: 'order',
       //控制歌词是否显示
       isShow: false,
+      //控制抽屉动态样式
+      isDrawer:false
     }
   },
   methods: {
@@ -237,7 +239,7 @@ export default {
       // });
 
       let index = this.musicList.findIndex(item => item.id == this.$store.state.musicId)
-      console.log(index)
+      // console.log(index)
       if (index != -1) {
         // 记录当前音乐的index
         this.currentMusicIndex = index
@@ -369,6 +371,8 @@ export default {
       this.drawer = !this.drawer
       this.hasDrawerOpend = true
       this.handleDrawerListDOM(this.currentMusicIndex)
+      //样式调整
+      this.isDrawer = !this.isDrawer
     },
 
     // 判断用户是否喜欢该音乐
@@ -573,7 +577,9 @@ export default {
 .playList i{
   color: #ffffff;
 }
-
+.playList .active{
+  color: #ec4141;
+}
 .center .icon-xunhuan {
   font-size: 17px;
 }
@@ -596,7 +602,9 @@ export default {
 .volumeControl i{
   color: #ffffff;
 }
-
+.volumeControl .active{
+  color: #ec4141;
+}
 .icon-24gl-volumeHigh {
   font-size: 18px;
   margin-right: 7px;
@@ -611,7 +619,9 @@ export default {
   font-size: 18px;
   margin-right: 15px;
 }
-
+.volumeControl .active{
+  color: #ec4141;
+}
 .volumeSlider {
   width: 55px;
 }

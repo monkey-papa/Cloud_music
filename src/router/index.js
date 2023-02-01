@@ -45,7 +45,8 @@ const routes = [
                 component: Discover,
                 redirect: '/discover/recommend',
                 children: [
-                    { path: '/discover/recommend', component: Recommend },
+                    { path: '/discover/recommend', component: Recommend 
+                    },
                     {
                         path: '/discover/musiclist',
                         component: MusicList,

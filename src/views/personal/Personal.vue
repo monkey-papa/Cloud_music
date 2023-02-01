@@ -104,6 +104,7 @@
 
 <script>
 import ListCard from "components/listCard/ListCard.vue";
+import { getTimeStamp } from '@/plugins/utils';
 export default {
   components: { ListCard },
   name: "Personal",
@@ -160,7 +161,7 @@ export default {
 
     // 点击退出登录的回调
     async logout() {
-      let res = await this.$request("/logout");
+      let res = await this.$request("/logout",{ timestamp: getTimeStamp() });
       // console.log(res);
 
       if (res.data.code != 200) {

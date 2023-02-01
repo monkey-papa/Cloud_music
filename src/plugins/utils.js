@@ -1,4 +1,3 @@
-
 // 格式化时间
 export function formatDate(date, fmt) {
     // 1.获取年份
@@ -65,4 +64,9 @@ export function returnSecond(time) {
     let m = parseInt(time[0]);
     let s = parseInt(time[1]);
     return m * 60 + s;
+}
+
+// 生成当前时间戳
+export function getTimeStamp() {
+    return Date.now();
 }

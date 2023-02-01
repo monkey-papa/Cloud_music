@@ -1,5 +1,5 @@
 <template>
-<!-- 音乐单曲评论 -->
+<!-- 歌单评论 -->
   <div class="hotComments">
     <div
       class="comments"
@@ -235,6 +235,7 @@ export default {
     // 关闭评论dialog的回调
     closeCommentDialog() {
       this.isCommentDialogShow = false;
+      // console.log(this.isCommentDialogShow)
       this.commentInput = "";
       this.floorCommentId = "";
       this.commentMode = true;
@@ -242,7 +243,7 @@ export default {
     },
     // 点击喜欢该评论的回调
     async likeCurrentComment(flag, cid) {
-      console.log(flag, cid);
+      // console.log(flag, cid);
       // 判断是否登录
       if (!this.$store.state.isLogin) {
         this.$message.warning("只有登陆后才能点赞哦!");
@@ -279,7 +280,7 @@ export default {
         type,
         timestamp,
       });
-      console.log(res);
+      // console.log(res);
       if (res.data.code == 200) {
         this.$emit("getComment");
       } else {
@@ -290,7 +291,7 @@ export default {
     // 点击楼层评论的回调
     // commentId是评论id  nickName是评论作者
     floorComment(commentId, nickName) {
-      console.log(commentId, nickName);
+      // console.log(commentId, nickName);
       // isHotComment为false 说明没有文本框
       if (this.isHotComment == false) {
         // 将其转给hotComment处理
@@ -315,7 +316,7 @@ export default {
 
     // 点击提交楼层评论的回调
     async submitFloorComment() {
-      console.log("提交楼层评论");
+      // console.log("提交楼层评论");
 
       // 判断是否登录
       if (!this.$store.state.isLogin) {
@@ -386,14 +387,15 @@ export default {
         if (this.commentInput.length < this.floorCommentInputLength) {
           // 当长度小于当前楼层评论前面默认的字时
           this.commentMode = true;
-          console.log("修改mode");
+          // console.log("修改mode");
         }
       }
     },
 
-    // 打开musicCommentDialog
+    // 打开评论弹窗
     openDialog() {
-      this.isCommentDialogShow = !this.isCommentDialogShow;
+      this.isCommentDialogShow = true;
+      // console.log(this.isCommentDialogShow)
       // dialog在第一次出现前是不渲染的，所以这里用nextTick
       this.$nextTick(() => {
         // 让评论框获得焦点
@@ -534,6 +536,7 @@ export default {
   height: 65px !important;
   font-size: 12px;
   resize: none;
+  color: #f2f2f2;
 }
 
 .el-textarea /deep/ .el-textarea__inner:focus {
@@ -550,20 +553,23 @@ export default {
   margin: 10px 0;
 }
 
-.el-button:hover {
-  background-color: #f2f2f2;
-}
+/* .el-button:hover {
+  background-color: #16181c;
+} */
 
 .el-button {
   transform: scale(0.9) translateX(5%);
   background: #2b2c31;
-  color: #cccccc;
+  color: #ff0000;
   border: 1px solid #2b2c31;
 }
-
-.submitComment:focus {
-  background-color: #fff;
+.el-button:focus, .el-button:hover{
+  border: 1px solid #2b2c31;
+  color: #ff0000;
 }
+/* .submitComment:focus {
+  background-color: #16181c;
+} */
 
 .commentCardSwitch {
   position: fixed;
@@ -571,13 +577,14 @@ export default {
   top: calc(80vh - 105px);
   transform: translateX(-50%) scale(0.9);
   border: none;
-  background-color: #f1f1f1;
+  background-color: #202023;
   line-height: 15px;
   padding: 10px 10px 10px 30px;
+  color: #ccc;
 }
 
 .commentCardSwitch:hover {
-  background-color: #e1e1e1;
+  background-color: #16181c;
 }
 
 .commentCardSwitch i {
@@ -590,7 +597,7 @@ export default {
 .musicTitle {
   width: 100%;
   font-weight: bold;
-  color: #333333;
+  color: #ff0000;
   text-align: center;
   margin-bottom: 10px;
 }
@@ -622,6 +629,7 @@ export default {
 
 .commentDialog /deep/ .el-dialog__body {
   padding-bottom: 5px !important;
+  background: #16181c;
 }
 
 .likeCurrentComment,
@@ -631,5 +639,8 @@ export default {
 ::v-deep .el-textarea[data-v-9b7ef5a2] .el-input__count{
   background: #2b2c31;
   color: #cccccc;
+}
+::v-deep .el-dialog__header{
+  background: #16181c;
 }
 </style>

@@ -158,15 +158,15 @@ export default {
         !this.comment.comments &&
         this.$store.state.musicId != ""
       ) {
-        console.log("请求歌词和评论");
+        // console.log("请求歌词和评论");
         this.getLyric(this.$store.state.musicId);
         this.getMusicComment(this.$store.state.musicId);
       }
-      //   当卡片关闭时 延迟 3s再删除里面渲染的内容 提升体验
+      //当卡片关闭时 延迟 0.35s再删除里面渲染的内容 提升体验,时间过长容易导致发布评论按钮回显
       else if (isMusicDetailCardShow == false) {
         timer = setTimeout(() => {
           this.cleanCard = true;
-        }, 3000);
+        }, 350);
       }
     },
     // 当vuex中的歌曲id发生变化时,需要重新获取评论和歌词
@@ -248,7 +248,7 @@ export default {
           type: 0,
           timestamp,
         });
-        console.log(res);
+        // console.log(res);
         if (res.data.code != 200) {
           this.$message.error("获取热门评论失败,请稍后重试!");
           return;
@@ -262,7 +262,7 @@ export default {
         timestamp,
       });
 
-      console.log(res);
+      // console.log(res);
       if (res.data.code !== 200) {
         this.$message.error("获取评论失败,请稍后重试!");
       }
