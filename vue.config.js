@@ -13,24 +13,24 @@ module.exports = {
     },
     devServer: {
         proxy: {
-            '/api': {
-                // target: 'https://www.codeman.store',
-                target: 'http://www.codeman.ink:3000',
-                changeOrigin: true,
-                ws: true,
-                pathRewrite: {
-                    '^/api': ''
-                }
-            },
             // '/api': {
             //     // target: 'https://www.codeman.store',
-            //     target: 'http://101.42.54.70:3000/',
+            //     target: 'http://www.codeman.ink:3000',
             //     changeOrigin: true,
             //     ws: true,
             //     pathRewrite: {
             //         '^/api': ''
             //     }
             // },
+            '/api': {
+                // target: 'https://www.codeman.store',
+                target: 'http://101.42.54.70:3000/',
+                changeOrigin: true,
+                ws: true,
+                pathRewrite: {
+                    '^/api': ''
+                }
+            },
             'm7': {
                 target: 'http://m7.music.126.net',
                 changeOrigin: true,
