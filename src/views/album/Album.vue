@@ -20,11 +20,11 @@
             <i class="iconfont icon-bofang playAll"></i>
             <span>播放全部</span>
           </div>
-          <div class="buttonItem" @click="subAlbum">
+          <div class="buttonItem bg" @click="subAlbum">
             <i class="iconfont icon-xihuan" :class="isSub ? 'red' : ''"></i>
             <span>{{ isSub ? '已收藏' : '收藏' }}</span>
           </div>
-          <div class="buttonItem">
+          <div class="buttonItem bg">
             <i class="iconfont icon-zhuanfa"></i>
             <span>分享</span>
           </div>
@@ -390,6 +390,7 @@ export default {
   padding: 8px 15px;
   border-radius: 5px;
   transform: scale(0.9);
+  color: #cccccc;
 }
 
 .buttonItem i {
@@ -470,5 +471,8 @@ export default {
 }
 ::v-deep .el-table__row td:nth-child(3) .currentRow{
   color: #ec4141 !important;
+}
+.buttons .bg{
+  background-color: #202023;
 }
 </style>

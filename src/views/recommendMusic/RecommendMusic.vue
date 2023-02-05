@@ -17,7 +17,7 @@
           <i class="iconfont icon-bofang playAll"></i>
           <span>播放全部</span>
         </div>
-        <div class="buttonItem">
+        <div class="buttonItem bg">
           <i class="iconfont icon-xihuan"></i>
           <span>收藏全部</span>
         </div>
@@ -279,6 +279,7 @@ export default {
   padding: 8px 15px;
   border-radius: 5px;
   transform: scale(0.9);
+  color: #cccccc;
 }
 
 .buttonItem i {
@@ -327,5 +328,8 @@ export default {
 }
 ::v-deep .el-table__row td:nth-child(4) .currentRow{
   color: #ec4141 !important;
+}
+.buttons .bg{
+  background-color: #202023;
 }
 </style>

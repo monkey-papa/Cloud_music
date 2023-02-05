@@ -26,7 +26,8 @@
                 : officialListDetailItem.topSongs.slice(0, 10))) ||
             officialListDetailItem.songs.slice(0, 10)"
             :key="index"
-            @click="handleRowClick"
+            :class="index==idx?'active':''"
+            @click="handleRowClick(item,index)"
             @dblclick="
               handleRowDbClick(officialListDetailItem.id || item.id, index)
             "
@@ -52,7 +53,9 @@
 export default {
   name: "ListTable",
   data() {
-    return {};
+    return {
+      idx:-1
+    };
   },
   props: {
     officialListDetailItem: {
@@ -85,15 +88,17 @@ export default {
   },
   methods: {
     // 点击行的回调 （选中）
-    handleRowClick(event) {
-      // 点击时，事件对象可能是td或tr，这里做下判断
-      let path;
-      if (event.path[0].localName == "tr") {
-        path = event.path[0];
-      } else {
-        path = event.path[1];
-      }
-      this.$emit("handleRowClick", path);
+    handleRowClick(item,index) {
+      // // 点击时，事件对象可能是td或tr，这里做下判断
+      // let path;
+      // console.log(event)
+      // if (event.path[0].localName == "tr") {
+      //   path = event.path[0];
+      // } else {
+      //   path = event.path[1];
+      // }
+      // this.$emit("handleRowClick", path);
+      this.idx = index
     },
     // 双击行的回调 播放
     // id 为当前歌单的id index为双击歌曲在歌单的索引
@@ -205,5 +210,8 @@ table {
 
 tr {
   cursor: pointer;
+}
+::v-deep .listContainer tr.listRows.active{
+  color:#b82525;
 }
 </style>

@@ -14,11 +14,10 @@
             <div>{{ userInfo.nickname }}</div>
             <div
               class="logout"
-              @click="logout"
               v-if="isCurrentUser && this.$store.state.isLogin"
             >
               <i class="iconfont icon-zhuxiao1"></i>
-              <span>退出登录</span>
+              <span @click="logout">退出登录</span>
             </div>
           </div>
           <div class="tags">
@@ -160,24 +159,38 @@ export default {
     },
 
     // 点击退出登录的回调
-    async logout() {
-      let res = await this.$request("/logout",{ timestamp: getTimeStamp() });
-      // console.log(res);
-
-      if (res.data.code != 200) {
-        this.$message("退出登录失败, 请稍后重试!");
-        return;
-      }
-
-      // 清空data和localstorage中的数据，以及cookie
-      // window.localStorage.setItem("userInfo", "");
-      // this.clearAllCookie();
-      // 删除localstoarge的userId
-      window.localStorage.removeItem("userId");
-      //   在vuex中更新登录状态
-      this.$store.commit("updataLoginState", false);
-      this.$message.success("退出成功!");
-      this.isCurrentUser = false;
+    logout() {
+      this.$confirm('要退出登录吗?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(async() => {
+          let res = await this.$request("/logout",{ timestamp: getTimeStamp() });
+          // console.log(res);
+          if (res.data.code != 200) {
+            this.$message("退出登录失败, 请稍后重试!");
+            return;
+          }
+          // 清空data和localstorage中的数据，以及cookie
+          // window.localStorage.setItem("userInfo", "");
+          // this.clearAllCookie();
+          // 删除localstoarge的userId
+          window.localStorage.removeItem("userId");
+          //   在vuex中更新登录状态
+          this.$store.commit("updataLoginState", false);
+          this.$message.success("退出成功!");
+          this.isCurrentUser = false;
+          this.$message({
+            type: 'success',
+            message: '删除成功!'
+          });
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          });          
+        });
+      
     },
   },
   watch: {

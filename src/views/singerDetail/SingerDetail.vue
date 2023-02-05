@@ -14,11 +14,11 @@
         </div>
         <!-- 操作按钮 -->
         <div class="buttons">
-          <div class="buttonItem" @click="subSinger">
+          <div class="buttonItem bg" @click="subSinger">
             <i class="iconfont icon-xihuan" :class="isSub ? 'red' : ''"></i>
             <span>{{ isSub ? "已收藏" : "收藏" }}</span>
           </div>
-          <div class="buttonItem">
+          <div class="buttonItem bg">
             <i class="iconfont icon-link"></i>
             <span>个人主页</span>
           </div>
@@ -546,9 +546,9 @@ export default {
 .buttonItem {
   font-size: 12px;
   padding: 8px 15px;
-  border: 1px solid #ddd;
   border-radius: 5px;
   transform: scale(0.9);
+  color: #cccccc;
 }
 
 .buttonItem i {
@@ -605,5 +605,7 @@ export default {
 ::v-deep .el-tabs__item:hover{
   color: #b82525 !important;
 }
-
+.buttons .bg{
+  background-color: #202023;
+}
 </style>

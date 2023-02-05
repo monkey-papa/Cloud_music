@@ -7,7 +7,6 @@
       <!-- 侧边栏 -->
       <el-aside width="160px">
         <el-menu
-          active-text-color="black"
           router
           :default-active="defaultActive"
         >
