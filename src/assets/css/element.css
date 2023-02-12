@@ -1,6 +1,6 @@
 .el-pagination.is-background .el-pager li:not(.disabled):hover {
     color: black!important;
-    background-color: #f4f4f4!important;
+    background-color: #ccc!important;
 }
 .el-pagination.is-background .el-pager li:not(.disabled).active{
     background-color: #ec4141!important;
@@ -8,8 +8,7 @@
 }
 
 .el-pagination.is-background .btn-next, .el-pagination.is-background .btn-prev, .el-pagination.is-background .el-pager li {
-    background-color: #fff!important;
-    border: 1px solid #ddd;
+    background-color: #202023!important;
     font-weight: normal;
 }
 
@@ -76,7 +75,7 @@
 }
 /* 奇数行颜色 */
 tbody .el-table th, .el-table tr {
-    background-color: #202023 !important;
+    background-color: #202023;
 }
 /* el-table触摸颜色 */
 /* .el-table--enable-row-hover .el-table__body tr:hover>td{
@@ -196,9 +195,9 @@ tr .is-leaf:nth-child(7) {
     padding-right: 0 !important;
 }
 
-.el-menu-item:focus, .el-menu-item:hover{
+/* .el-menu-item:focus, .el-menu-item:hover{
     background-color: #fff !important;
-}
+} */
 
 .el-dialog__body {
     padding: 0 20px 40px !important;

@@ -27,7 +27,7 @@ export default {
     },
   },
   created() {
-    if (!this.$store.state.isLogin) {
+    if (!window.localStorage.getItem('userId')) {
       this.$message.error("收藏页面只有登录后才能访问哦!");
       this.$router.replace("/index");
     }

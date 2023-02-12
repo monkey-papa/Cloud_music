@@ -111,17 +111,17 @@ export default {
       // 进度条的位置
       timeProgress: 0,
       // 基础音量
-      volume: 1,
+      volume: 3,
       // 是否静音
       isMuted: false,
       // 抽屉是否被打开过（如果没打开过，里面的数据是不会渲染的）
       hasDrawerOpend: false,
       // 用户的喜欢音乐列表
-      likeMuiscList: [],
+      likeMusicList: [],
       // 用户是否喜欢当前音乐
       isUserLikeCurrentMusic: false,
       recondInfo: `<div style='text-align:center;font-size:12px;'>
-粤ICP备20221215号<br>个人邮箱: 1816298537@qq.com<br>本站为仿网易云音乐展示项目, 仅供学习使用, 侵权必删!</div>`,
+粤ICP备20221215号<br>个人邮箱:1816298537@qq.com<br>本站为仿网易云音乐展示项目,仅供学习使用,侵权必删!</div>`,
       // 播放模式（顺序播放，随机播放）
       // order random
       playType: 'order',
@@ -136,7 +136,6 @@ export default {
     //请求并处理歌词数据
     async getLyric(id) {
       let res = await this.$request('/lyric', { id })
-      //   console.log(res);
       let lyrics = res.data.lrc.lyric
       // 对获取到的歌词进行处理
       let arr = lyrics.split('\n')
@@ -161,9 +160,7 @@ export default {
         //将结果压入最终数组
         result.push([parseInt(t[0], 10) * 60 + parseFloat(t[1]), value])
       })
-
       this.lyric = result
-      // console.log(this.lyric);
     },
     // 请求
     // 请求歌曲的url
@@ -187,9 +184,9 @@ export default {
     async likeMusic(id, like) {
       let res = await this.$request('/like', { id, like })
       if (res.data.code == 200) {
-        console.log('喜欢操作成功')
+        this.$message.success("操作成功");
       } else {
-        console.log('喜欢操作失败')
+        this.$message.error("操作失败");
       }
     },
     // 获取喜欢音乐列表
@@ -201,9 +198,9 @@ export default {
         uid: window.localStorage.getItem('userId'),
         timestamp
       })
-      this.likeMuiscList = res.data.ids
+      this.likeMusicList = res.data.ids
       // 将喜欢列表提交到vuex 供歌单中显示喜欢使用 （因为性能问题暂时没做）
-      this.$store.commit('updataLikeMuiscList', this.likeMuiscList)
+      this.$store.commit('updataLikeMusicList', this.likeMusicList)
     },
 
     // 点击播放键的回调
@@ -377,11 +374,13 @@ export default {
 
     // 判断用户是否喜欢该音乐
     getIsUserLikeCurrentMusic() {
-      this.isUserLikeCurrentMusic = this.likeMuiscList.find(item => item == this.$store.state.musicId)
+      this.isUserLikeCurrentMusic = this.likeMusicList.find(item => item == this.$store.state.musicId)
     },
     // 用户点击喜欢该音乐的回调
     async likeIt() {
-      if (!window.localStorage.getItem('userInfo')) {
+      // console.log(this.likeMusicList.length)
+      //如果都展示不了likeMusicList，也就等同于没有登录了
+      if (this.likeMusicList.length < 0) {
         this.$message.error('请先登录!')
         return
       }
@@ -393,8 +392,7 @@ export default {
     // 点击下载按钮的回调
     downloadCurrentMusic() {
       // console.log("download");
-      console.log(this.musicDetail, this.musicUrl)
-
+      // console.log(this.musicDetail, this.musicUrl)
       // 匹配资源的域名
       let url = this.musicUrl.match(/\http.*?\.net/)
       // 匹配域名名称，并匹配对应的代理
@@ -440,7 +438,7 @@ export default {
   watch: {
     // 监听vuex中musicId的变化
     '$store.state.musicId'(id) {
-      console.log('vuex中的id发生了变化')
+      // console.log('vuex中的id发生了变化')
       // 先暂停当前播放的音乐
       this.pauseMusic()
       this.musicList = this.$store.state.musicList
@@ -471,7 +469,7 @@ export default {
         this.getLikeMusicList()
       } else {
         // 清空喜欢列表
-        this.likeMuiscList = []
+        this.likeMusicList = []
       }
     }
   },

@@ -190,6 +190,7 @@ h4 {
   width: 20px;
   border: 50%;
 }
+/* 小图标的白色 */
 .iconfont {
   color: #ffffff;
 }

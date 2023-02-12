@@ -25,7 +25,7 @@ const state = {
     // 在歌手详情保存的上一首歌曲信息
     currentRowInfo: {},
     // 用户喜欢的音乐列表
-    likeMuiscList: [],
+    likeMusicList: [],
     // 已收藏的歌单
     // 已收藏的专辑
     subAlbumList: null,
@@ -77,7 +77,7 @@ const store = new Vuex.Store({
         },
 
         //更新登录状态
-        updataLoginState(state, flag = false) {
+        updataLoginState(state, flag) {
             state.isLogin = flag;
         },
 
@@ -104,8 +104,8 @@ const store = new Vuex.Store({
         },
         // 更新用户喜欢的音乐列表
         // 才发现这里拼错了 懒得改了
-        updataLikeMuiscList(state, likeMuiscList) {
-            state.likeMuiscList = likeMuiscList;
+        updataLikeMusicList(state, likeMusicList) {
+            state.likeMusicList = likeMusicList;
         },
         // 更新已收藏的专辑列表
         updateSubAlbumList(state, subAlbumList) {

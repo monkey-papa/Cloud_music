@@ -215,13 +215,13 @@ export default {
     },
   },
   created() {
-    if (!this.$store.state.isLogin) {
+    if (!window.localStorage.getItem('userId')) {
       this.$message.error("只有登录后才能进入每日推荐页面哦!");
       this.$router.replace("/discover");
     }
   },
   async mounted() {
-    if (this.$store.state.isLogin) {
+    if (window.localStorage.getItem('userId')) {
       await this.getRecommendMusic();
       // 判断是否和上一次打开的歌单相同
       if (this.recommendMusicListId == this.$store.state.musicListId) {
@@ -237,7 +237,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="less">
 .recommendInfo {
   padding: 20px;
 }

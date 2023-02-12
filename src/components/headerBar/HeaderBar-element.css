@@ -20,12 +20,12 @@
 .el-input__inner {
     background-color: #b82525 !important;
     border: none;
-    color: white !important;
+    color: white;
     border-radius: 5px;
 }
 
 .el-input__inner::-webkit-input-placeholder {
-    color: white!important;
+    /* color: white!important; */
 }
 
 .el-form-item {

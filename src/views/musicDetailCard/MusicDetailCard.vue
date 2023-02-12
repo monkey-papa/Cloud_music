@@ -447,11 +447,11 @@ export default {
   margin: 30px 0 15px;
   color: #fff;
 }
-
+// 歌词卡片歌名的白色
 .title div {
   margin: 7px 0;
 }
-
+// 歌词卡片歌名的白色
 .musicName {
   font-size: 23px;
   color: #fff;

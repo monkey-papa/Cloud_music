@@ -1,9 +1,5 @@
 import Vue from 'vue'
 import App from './App.vue'
-
-import router from './router/index'
-import store from './store/index'
-
 // 全局样式表
 import './plugins/element'
 import "./assets/css/base.css"
@@ -13,6 +9,9 @@ Vue.prototype.$confirm = MessageBox.confirm
 //引入阿里图标
 import "@/assets/iconfont/iconfont.css";
 import "@/assets/iconfont/geci/iconfont.css";
+
+import router from './router/index'
+import store from './store/index'
 import { request } from "./network/request";
 
 Vue.prototype.$request = request;

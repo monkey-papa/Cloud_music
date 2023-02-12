@@ -711,7 +711,7 @@ export default {
   color: #b82525 !important;
 }
 ::v-deep .el-table th.el-table__cell {
-  background: #16181c;
+  background-color: #16181c !important;
 }
 /* 音乐标题的灰色 */
 ::v-deep .el-table__row td:nth-child(3) .cell {

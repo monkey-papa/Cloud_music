@@ -131,7 +131,7 @@ export default {
 .lyrics::-webkit-scrollbar {
   display: none;
 }
-
+/* 歌词白色 */
 .lyricsItem {
   font-size: 12px;
   /* height: 20px; */

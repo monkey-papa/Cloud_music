@@ -440,7 +440,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="less">
 .hotComments {
   margin-bottom: 20px;
   width: 100%;
@@ -532,18 +532,18 @@ export default {
 .content{
   color: #cccccc;
 }
-.el-textarea /deep/ .el-textarea__inner {
+.el-textarea .el-textarea__inner {
   height: 65px !important;
   font-size: 12px;
   resize: none;
   color: #f2f2f2;
 }
 
-.el-textarea /deep/ .el-textarea__inner:focus {
+.el-textarea .el-textarea__inner:focus {
   border-color: #aaa;
 }
 
-.el-textarea /deep/ .el-input__count {
+.el-textarea .el-input__count {
   transform: scale(0.9);
 }
 
@@ -602,7 +602,7 @@ export default {
   margin-bottom: 10px;
 }
 
-.musicCommentArea /deep/ .el-textarea__inner {
+.musicCommentArea .el-textarea__inner {
   height: 110px !important;
 }
 ::v-deep .el-textarea[data-v-9b7ef5a2] .el-textarea__inner{
@@ -627,7 +627,7 @@ export default {
   background-color: #ec4141;
 }
 
-.commentDialog /deep/ .el-dialog__body {
+.commentDialog .el-dialog__body {
   padding-bottom: 5px !important;
   background: #16181c;
 }

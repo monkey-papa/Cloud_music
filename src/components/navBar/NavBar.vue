@@ -64,7 +64,7 @@ export default {
   position: relative;
   background-color: #16181c;
 }
-
+/* 是发现音乐中4个栏目的白色 */
 .navBar {
   display: flex;
   position: relative;
