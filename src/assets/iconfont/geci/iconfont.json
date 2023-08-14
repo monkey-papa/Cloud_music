@@ -1,0 +1,16 @@
+{
+  "id": "3810139",
+  "name": "歌词",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "13137519",
+      "name": "歌词未点击",
+      "font_class": "geciweidianji",
+      "unicode": "e727",
+      "unicode_decimal": 59175
+    }
+  ]
+}
