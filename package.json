@@ -21,8 +21,7 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.5.13",
     "@vue/cli-service": "^4.5.13",
-    "vue-template-compiler": "^2.6.12",
-    "webpack-bundle-analyzer": "^4.8.0"
+    "vue-template-compiler": "^2.6.12"
   },
   "browserslist": [
     "> 1%",
